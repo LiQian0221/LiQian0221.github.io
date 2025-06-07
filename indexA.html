@@ -1,50 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>我的留言板</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; }
-        form { border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; }
-        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
-        button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; }
-        .message { border: 1px solid #eee; padding: 15px; margin-bottom: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>欢迎来到我的留言板</h1>
-    
-    <!-- 留言表单 -->
+  <div class="container">
+    <h1 class="title">留言板</h1>
     <form id="messageForm">
-        <input type="text" placeholder="你的名字" required>
-        <textarea placeholder="请输入留言内容" required></textarea>
-        <button type="submit">提交留言</button>
+      <textarea id="messageInput" placeholder="在这里写下你的留言..."></textarea>
+      <button type="submit">提交留言</button>
     </form>
-    
-    <!-- 留言列表（初始为空） -->
-    <div id="messages"></div>
-
-    <script>
-        // 简单的JavaScript交互：提交表单后显示留言
-        document.getElementById('messageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = this.querySelector('input').value;
-            const content = this.querySelector('textarea').value;
-            
-            // 添加新留言到页面
-            const messagesDiv = document.getElementById('messages');
-            const messageHTML = `
-                <div class="message">
-                    <h3>${name}</h3>
-                    <p>${content}</p>
-                    <small>${new Date().toLocaleString()}</small>
-                </div>
-            `;
-            messagesDiv.insertAdjacentHTML('afterbegin', messageHTML);
-            
-            // 清空表单
-            this.reset();
-        });
-    </script>
+    <div id="messagesList" class="messages-list">
+      <div class="message-item">
+        <div class="avatar"></div>
+        <div class="message-content">
+          <p class="message-text">这是一条示例留言:hello!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
